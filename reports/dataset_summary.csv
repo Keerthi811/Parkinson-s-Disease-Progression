@@ -1,0 +1,6 @@
+Metric,Value
+Number of Patients,42.0
+Number of Recordings,252.0
+Average Recordings per Patient,6.0
+Earliest test_time,-2.8612
+Latest test_time,152.9689

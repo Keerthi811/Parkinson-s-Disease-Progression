@@ -1,0 +1,66 @@
+===========================================================================
+  PARKINSON'S DISEASE PROGRESSION — BASELINE MODEL EVALUATION REPORT
+===========================================================================
+
+  Target Variable : motor_UPDRS
+  Evaluation      : 5-Fold GroupKFold CV + Unseen Hold-out Test Set
+  Models          : Dummy, Linear Regression, RidgeCV, LassoCV
+
+---------------------------------------------------------------------------
+  BEST BASELINE MODEL
+---------------------------------------------------------------------------
+  Model      : Dummy
+  Test MAE   : 6.3572
+
+---------------------------------------------------------------------------
+  PERFORMANCE SUMMARY  (CV: mean +/- std across 5 folds)
+---------------------------------------------------------------------------
+  Model                        CV MAE          CV RMSE        CV R2   Test MAE  Test R2   Gen.Gap
+  -------------------------------------------------------------------------
+  Dummy               7.2002+/-1.0932  8.2880+/-1.4209 -0.1134+/-0.0793     6.3572  -0.0186   -0.8430
+  Linear              8.8882+/-1.9945 11.3549+/-3.7483 -2.1638+/-3.5943     9.4185  -2.6959   +0.5302
+  Ridge               8.6989+/-1.9937 10.8764+/-3.3894 -1.8079+/-3.0378     9.0690  -2.3647   +0.3701
+  Lasso               7.2002+/-1.0932  8.2880+/-1.4209 -0.1134+/-0.0793     6.3572  -0.0186   -0.8430
+
+---------------------------------------------------------------------------
+  HYPERPARAMETER SELECTION (RidgeCV / LassoCV)
+---------------------------------------------------------------------------
+  Dummy              N/A (no alpha hyperparameter)
+  Linear             N/A (no alpha hyperparameter)
+  Ridge              Selected alpha = 0.100000
+  Lasso              Selected alpha = 10.000000
+
+---------------------------------------------------------------------------
+  GENERALIZATION GAP ANALYSIS
+---------------------------------------------------------------------------
+  Generalization Gap = Test_MAE - CV_MAE_Mean
+  A positive gap indicates worse generalization on unseen patients.
+
+  Dummy              Gap = -0.8430  [MODERATE generalization]
+  Linear             Gap = +0.5302  [MODERATE generalization]
+  Ridge              Gap = +0.3701  [GOOD generalization]
+  Lasso              Gap = -0.8430  [MODERATE generalization]
+
+---------------------------------------------------------------------------
+  LEADERBOARD (ranked by Test_MAE ascending)
+---------------------------------------------------------------------------
+  #1   Dummy              Test_MAE=6.3572  CV_MAE=7.2002  Gap=-0.8430
+  #2   Lasso              Test_MAE=6.3572  CV_MAE=7.2002  Gap=-0.8430
+  #3   Ridge              Test_MAE=9.0690  CV_MAE=8.6989  Gap=+0.3701
+  #4   Linear             Test_MAE=9.4185  CV_MAE=8.8882  Gap=+0.5302
+
+---------------------------------------------------------------------------
+  OBSERVATIONS
+---------------------------------------------------------------------------
+  1. The DummyRegressor (mean prediction) establishes the naive floor.
+     All trained models should substantially outperform it.
+  2. RidgeCV and LassoCV use built-in alpha search on training data,
+     ensuring no hyperparameter information leaks from validation sets.
+  3. LassoCV performs implicit feature selection (many coefficients -> 0),
+     which aids interpretability for dissertation analysis.
+  4. The generalization gap reveals how well each model transfers from
+     seen patients (CV) to entirely unseen patients (hold-out test).
+  5. These baselines serve as reference points for advanced models
+     (e.g., Random Forest, LSTM) in subsequent phases.
+
+===========================================================================

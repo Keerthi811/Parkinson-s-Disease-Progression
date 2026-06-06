@@ -1,0 +1,5 @@
+Rank,Model,CV_MAE,Test_MAE,Generalization_Gap
+1,Dummy,7.2002,6.3572,-0.843
+2,Lasso,7.2002,6.3572,-0.843
+3,Ridge,8.6989,9.069,0.3701
+4,Linear,8.8882,9.4185,0.5302

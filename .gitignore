@@ -40,8 +40,5 @@ logs/*
 !logs/.gitkeep
 *.log
 
-# Ignore generated reports (figures & tables)
-reports/figures/*
-!reports/figures/.gitkeep
-reports/tables/*
-!reports/tables/.gitkeep
+# Allow generated reports and figures to be tracked in git
+

@@ -1,0 +1,16 @@
+{
+    "rows_before": 5875,
+    "rows_after": 5875,
+    "duplicates_removed": 0,
+    "clinical_trials_retained": 3374,
+    "missing_values_imputed": 0,
+    "datatype_corrections": 1,
+    "imputation_details": {},
+    "corrections_details": {
+        "age": {
+            "from": "int64",
+            "to": "float"
+        }
+    },
+    "status": "SUCCESS"
+}

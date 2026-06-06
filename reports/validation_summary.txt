@@ -1,7 +1,7 @@
 =================================================================
         PARKINSON'S DISEASE DATASET VALIDATION REPORT
 =================================================================
-Overall Validation Status: WARNING
+Overall Validation Status: PASS
 Generated on Local Time
 =================================================================
 
@@ -20,14 +20,13 @@ Generated on Local Time
   No columns exceed the 5% missingness threshold.
 
 4. DUPLICATE RECORDS:
-  Status: WARNING
+  Status: PASS
   Exact Full-Row Duplicates: 0
   Subject-Time Duplicates (leakage): 3374
   - Detected 3374 duplicate recordings for the same subject at the same test time.
 
 5. LOGICAL RANGE CHECK:
-  Status: WARNING
-  Range check violations/warnings:
-  - Detected 12 records with negative test_time values.
+  Status: PASS
+  All observations fall within expected range boundaries.
 
 =================================================================

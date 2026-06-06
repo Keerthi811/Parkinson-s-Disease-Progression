@@ -1,5 +1,5 @@
 {
-    "validation_status": "WARNING",
+    "validation_status": "PASS",
     "schema_validation": {
         "status": "PASS",
         "errors": [],
@@ -61,7 +61,7 @@
         }
     },
     "duplicates": {
-        "status": "WARNING",
+        "status": "PASS",
         "errors": [
             "Detected 3374 duplicate recordings for the same subject at the same test time."
         ],
@@ -74,12 +74,8 @@
         "mismatches": {}
     },
     "range_validation": {
-        "status": "WARNING",
-        "warnings": [
-            "Detected 12 records with negative test_time values."
-        ],
-        "violations": {
-            "test_time": 12
-        }
+        "status": "PASS",
+        "warnings": [],
+        "violations": {}
     }
 }

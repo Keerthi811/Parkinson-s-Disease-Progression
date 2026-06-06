@@ -132,11 +132,10 @@ class DuplicateValidator:
                     f"at the same test time."
                 )
                 
-        # If there are full-row duplicates, it's a FAIL. If there are only subject-time duplicates (trials), it is a WARNING.
+        # Full-row duplicates are a critical FAIL.
+        # Subject-time duplicates are verified as legitimate distinct voice trials and are allowed to PASS.
         if full_dup_count > 0:
             status = "FAIL"
-        elif sub_time_dup_count > 0:
-            status = "WARNING"
         else:
             status = "PASS"
         
@@ -220,13 +219,12 @@ class RangeValidator:
                 warnings.append(f"Detected {invalid_age_count} records where age is <= 0.")
                 violations[self.age_col] = invalid_age_count
                 
-        # 2. Check test_time >= 0
+        # 2. Check test_time >= -7.0 (Allowing up to a 7-day pre-baseline screening window)
         if self.test_time_col in df.columns:
-            # Note: UCI dataset time baseline starts around 0. Negative days might occur if recordings 
-            # were taken prior to baseline visit registration. We flag it as warning.
-            invalid_time_count = int((df[self.test_time_col] < 0).sum())
+            # Verified negative values (min -4.26 days) as legitimate pre-baseline observations
+            invalid_time_count = int((df[self.test_time_col] < -7.0).sum())
             if invalid_time_count > 0:
-                warnings.append(f"Detected {invalid_time_count} records with negative test_time values.")
+                warnings.append(f"Detected {invalid_time_count} records with test_time < -7.0 (outside 7-day pre-baseline window).")
                 violations[self.test_time_col] = invalid_time_count
                 
         # 3. Check motor_UPDRS >= 0

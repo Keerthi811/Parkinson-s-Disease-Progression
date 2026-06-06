@@ -1,0 +1,114 @@
+Lasso Diagnostics Report
+Generated : 2026-06-06 16:37:37
+
+============================================================
+SECTION 1: MODEL PARAMETERS
+============================================================
+Model type          : LassoCV
+Selected alpha      : 10.0
+Alphas searched     : [0.01, 0.1, 1.0, 10.0]
+CV folds used (fit) : 3
+
+============================================================
+SECTION 2: COEFFICIENT SPARSITY ANALYSIS
+============================================================
+Total features      : 131
+Non-zero coefs      : 0
+Zero coefs          : 131
+Sparsity            : 100.0%
+
+  All coefficients are zero — model produces a constant output.
+
+Model intercept     : 21.480501
+
+============================================================
+SECTION 3: PREDICTION EQUIVALENCE ANALYSIS
+============================================================
+Test set size       : 1074 observations
+
+Dummy predictions:
+  Mean              : 21.480501
+  Std               : 0.000000
+  Unique values     : 1
+
+Lasso predictions:
+  Mean              : 21.480501
+  Std               : 0.000000
+  Unique values     : 1
+
+Prediction difference (Lasso - Dummy):
+  Max absolute diff : 0.00000000
+  Mean absolute diff: 0.00000000
+  Predictions identical (atol=1e-6) : YES
+  Predictions effectively equal (<0.01): YES
+
+  Pearson r: cannot compute (zero-variance predictions)
+
+Test MAE comparison:
+  Lasso MAE         : 6.357165
+  Dummy MAE         : 6.357165
+  Difference        : 0.00000000
+
+Residual comparison:
+  Lasso residual std: 7.385632
+  Dummy residual std: 7.385632
+  Lasso residual mean: -1.008010
+  Dummy residual mean: -1.008010
+
+============================================================
+SECTION 4: INTERCEPT-ONLY MODEL VERIFICATION
+============================================================
+All coefs are zero. Lasso output = intercept (21.480501) for all samples.
+Max deviation of Lasso predictions from intercept: 0.00000000
+
+Dummy constant prediction (train mean): 21.480501
+Lasso intercept                       : 21.480501
+Difference (intercept - train mean)   : 0.000000
+
+FINDING: Lasso intercept is numerically equal to the training mean.
+This confirms Lasso has collapsed to an intercept-only (mean) predictor.
+
+============================================================
+SECTION 5: COEFFICIENT TABLE
+============================================================
+Coefficient CSV saved -> C:/Users/vikne/Downloads/Kee Project/reports/diagnostics/lasso_coefficients.csv
+
+Non-zero features: NONE
+Every feature has a coefficient of exactly 0.0
+
+============================================================
+SECTION 6: CONCLUSION
+============================================================
+
+  Selected alpha     : 10.0  (maximum in searched range [0.01, 0.1, 1.0, 10.0])
+  Total features     : 131
+  Non-zero coefs     : 0
+  Zero coefs         : 131  (100.0% sparsity)
+
+  VERDICT: YES — Lasso IS effectively equivalent to DummyRegressor.
+
+  Explanation:
+  LassoCV selected alpha=10.0 (the maximum value in the searched grid).
+  At this regularisation strength, the L1 penalty is strong enough to
+  drive ALL 131 feature coefficients to exactly zero. The model reduces
+  to an intercept-only prediction, which equals the training mean.
+  This is mathematically identical to what DummyRegressor(strategy='mean')
+  produces, which is why both models yield identical MAE and R2 scores.
+
+  Root cause:
+  The 131 features (voice biomarkers + temporal lags) are highly collinear
+  due to lag_1/lag_2/lag_3 of the same biomarker being near-identical.
+  Combined with a patient-level train/test split that introduces
+  between-patient variance in UPDRS scores, no linear combination of
+  these features generalized better than the global mean across unseen
+  patients. LassoCV correctly identified this via internal CV.
+
+  Implication:
+  Linear models are fundamentally insufficient for this regression task.
+  Non-linear models (Random Forest, Gradient Boosting, LSTM) are needed
+  to capture subject-specific disease trajectories. These should be
+  implemented in subsequent phases.
+
+============================================================
+LASSO DIAGNOSTICS COMPLETE
+============================================================

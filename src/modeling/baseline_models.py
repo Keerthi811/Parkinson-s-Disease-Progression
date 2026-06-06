@@ -834,6 +834,10 @@ class BaselineModelTrainer:
             "     seen patients (CV) to entirely unseen patients (hold-out test).",
             "  5. These baselines serve as reference points for advanced models",
             "     (e.g., Random Forest, LSTM) in subsequent phases.",
+            "  6. Temporal features were intentionally excluded from baseline linear models",
+            "     because diagnostic ablation studies demonstrated degraded generalization",
+            "     performance due to multicollinearity and high-dimensional feature interactions.",
+            "     Temporal features remain available for advanced nonlinear models.",
             "",
             "=" * 75,
         ]

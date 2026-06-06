@@ -1,0 +1,179 @@
+============================================================
+TEMPORAL FEATURE HEALTH CHECK REPORT
+Generated: 2026-06-06 16:37:57
+============================================================
+
+Total Original Features (including age, sex, test_time): 19
+Original Voice Features Only                          : 16
+Total Temporal Features                               : 112
+
+============================================================
+SECTION 1: SUMMARY BY TEMPORAL FEATURE TYPE
+============================================================
+Feature Type: Lag
+  Count          : 48
+  Avg Missing %  : 0.0000%
+  Avg Mean       : 1.473540
+  Avg Std        : 0.312419
+  Avg Variance   : 1.163277
+
+Feature Type: Rolling Mean
+  Count          : 16
+  Avg Missing %  : 0.0000%
+  Avg Mean       : 1.474579
+  Avg Std        : 0.277007
+  Avg Variance   : 0.921500
+
+Feature Type: Rolling Std
+  Count          : 16
+  Avg Missing %  : 0.0000%
+  Avg Mean       : 0.140665
+  Avg Std        : 0.104741
+  Avg Variance   : 0.121329
+
+Feature Type: Rate Change
+  Count          : 16
+  Avg Missing %  : 0.0000%
+  Avg Mean       : 0.001619
+  Avg Std        : 0.240074
+  Avg Variance   : 0.670494
+
+Feature Type: Historical Variability
+  Count          : 16
+  Avg Missing %  : 0.0000%
+  Avg Mean       : 0.184748
+  Avg Std        : 0.069990
+  Avg Variance   : 0.050732
+
+============================================================
+SECTION 2: INSTABILITY & VARIANCE DIAGNOSTICS
+============================================================
+Constant Features (nunique <= 1 or var == 0) (Count: 0):
+  None
+
+Near-Constant Features (var < 1e-6) (Count: 7):
+  - Jitter(Abs)_lag_1                                       var = 1.32e-09
+  - Jitter(Abs)_lag_2                                       var = 1.34e-09
+  - Jitter(Abs)_lag_3                                       var = 1.35e-09
+  - Jitter(Abs)_roll_mean_3                                 var = 8.64e-10
+  - Jitter(Abs)_roll_std_3                                  var = 4.24e-10
+  - Jitter(Abs)_rate_change                                 var = 1.30e-09
+  - Jitter(Abs)_historical_variability                      var = 3.49e-10
+
+============================================================
+SECTION 3: INDIVIDUAL FEATURE HEALTH METRICS
+============================================================
+Feature                                                      | Type                   | Missing % | Mean         | Std          | Variance    
+---------------------------------------------------------------------------------------------------------------------------------------
+Jitter(%)_lag_1                                              | Lag                    |     0.00% |     0.006175 |     0.005709 |     0.000033
+Jitter(%)_lag_2                                              | Lag                    |     0.00% |     0.006200 |     0.005791 |     0.000034
+Jitter(%)_lag_3                                              | Lag                    |     0.00% |     0.006210 |     0.005851 |     0.000034
+Jitter(%)_roll_mean_3                                        | Rolling Mean           |     0.00% |     0.006174 |     0.004541 |     0.000021
+Jitter(%)_roll_std_3                                         | Rolling Std            |     0.00% |     0.002238 |     0.003613 |     0.000013
+Jitter(%)_rate_change                                        | Rate Change            |     0.00% |    -0.000032 |     0.005808 |     0.000034
+Jitter(%)_historical_variability                             | Historical Variability |     0.00% |     0.003501 |     0.003898 |     0.000015
+Jitter(Abs)_lag_1                                            | Lag                    |     0.00% |     0.000044 |     0.000036 |     0.000000
+Jitter(Abs)_lag_2                                            | Lag                    |     0.00% |     0.000044 |     0.000037 |     0.000000
+Jitter(Abs)_lag_3                                            | Lag                    |     0.00% |     0.000044 |     0.000037 |     0.000000
+Jitter(Abs)_roll_mean_3                                      | Rolling Mean           |     0.00% |     0.000044 |     0.000029 |     0.000000
+Jitter(Abs)_roll_std_3                                       | Rolling Std            |     0.00% |     0.000016 |     0.000021 |     0.000000
+Jitter(Abs)_rate_change                                      | Rate Change            |     0.00% |    -0.000000 |     0.000036 |     0.000000
+Jitter(Abs)_historical_variability                           | Historical Variability |     0.00% |     0.000022 |     0.000019 |     0.000000
+Jitter:RAP_lag_1                                             | Lag                    |     0.00% |     0.003000 |     0.003173 |     0.000010
+Jitter:RAP_lag_2                                             | Lag                    |     0.00% |     0.003014 |     0.003222 |     0.000010
+Jitter:RAP_lag_3                                             | Lag                    |     0.00% |     0.003019 |     0.003257 |     0.000011
+Jitter:RAP_roll_mean_3                                       | Rolling Mean           |     0.00% |     0.002999 |     0.002467 |     0.000006
+Jitter:RAP_roll_std_3                                        | Rolling Std            |     0.00% |     0.001258 |     0.002106 |     0.000004
+Jitter:RAP_rate_change                                       | Rate Change            |     0.00% |    -0.000020 |     0.003337 |     0.000011
+Jitter:RAP_historical_variability                            | Historical Variability |     0.00% |     0.002028 |     0.002297 |     0.000005
+Jitter:PPQ5_lag_1                                            | Lag                    |     0.00% |     0.003292 |     0.003797 |     0.000014
+Jitter:PPQ5_lag_2                                            | Lag                    |     0.00% |     0.003307 |     0.003861 |     0.000015
+Jitter:PPQ5_lag_3                                            | Lag                    |     0.00% |     0.003314 |     0.003908 |     0.000015
+Jitter:PPQ5_roll_mean_3                                      | Rolling Mean           |     0.00% |     0.003291 |     0.003133 |     0.000010
+Jitter:PPQ5_roll_std_3                                       | Rolling Std            |     0.00% |     0.001217 |     0.002330 |     0.000005
+Jitter:PPQ5_rate_change                                      | Rate Change            |     0.00% |    -0.000023 |     0.003547 |     0.000013
+Jitter:PPQ5_historical_variability                           | Historical Variability |     0.00% |     0.001929 |     0.002633 |     0.000007
+Jitter:DDP_lag_1                                             | Lag                    |     0.00% |     0.008999 |     0.009520 |     0.000091
+Jitter:DDP_lag_2                                             | Lag                    |     0.00% |     0.009041 |     0.009665 |     0.000093
+Jitter:DDP_lag_3                                             | Lag                    |     0.00% |     0.009059 |     0.009773 |     0.000096
+Jitter:DDP_roll_mean_3                                       | Rolling Mean           |     0.00% |     0.008997 |     0.007402 |     0.000055
+Jitter:DDP_roll_std_3                                        | Rolling Std            |     0.00% |     0.003773 |     0.006317 |     0.000040
+Jitter:DDP_rate_change                                       | Rate Change            |     0.00% |    -0.000060 |     0.010011 |     0.000100
+Jitter:DDP_historical_variability                            | Historical Variability |     0.00% |     0.006083 |     0.006890 |     0.000047
+Shimmer_lag_1                                                | Lag                    |     0.00% |     0.034093 |     0.025930 |     0.000672
+Shimmer_lag_2                                                | Lag                    |     0.00% |     0.034171 |     0.026036 |     0.000678
+Shimmer_lag_3                                                | Lag                    |     0.00% |     0.034219 |     0.026055 |     0.000679
+Shimmer_roll_mean_3                                          | Rolling Mean           |     0.00% |     0.034092 |     0.022540 |     0.000508
+Shimmer_roll_std_3                                           | Rolling Std            |     0.00% |     0.010505 |     0.011712 |     0.000137
+Shimmer_rate_change                                          | Rate Change            |     0.00% |    -0.000104 |     0.021519 |     0.000463
+Shimmer_historical_variability                               | Historical Variability |     0.00% |     0.015406 |     0.009155 |     0.000084
+Shimmer(dB)_lag_1                                            | Lag                    |     0.00% |     0.311403 |     0.230967 |     0.053346
+Shimmer(dB)_lag_2                                            | Lag                    |     0.00% |     0.312044 |     0.231764 |     0.053715
+Shimmer(dB)_lag_3                                            | Lag                    |     0.00% |     0.312418 |     0.231888 |     0.053772
+Shimmer(dB)_roll_mean_3                                      | Rolling Mean           |     0.00% |     0.311420 |     0.200931 |     0.040373
+Shimmer(dB)_roll_std_3                                       | Rolling Std            |     0.00% |     0.096736 |     0.100962 |     0.010193
+Shimmer(dB)_rate_change                                      | Rate Change            |     0.00% |    -0.000738 |     0.191905 |     0.036828
+Shimmer(dB)_historical_variability                           | Historical Variability |     0.00% |     0.138836 |     0.076990 |     0.005927
+Shimmer:APQ3_lag_1                                           | Lag                    |     0.00% |     0.017181 |     0.013281 |     0.000176
+Shimmer:APQ3_lag_2                                           | Lag                    |     0.00% |     0.017219 |     0.013332 |     0.000178
+Shimmer:APQ3_lag_3                                           | Lag                    |     0.00% |     0.017243 |     0.013351 |     0.000178
+Shimmer:APQ3_roll_mean_3                                     | Rolling Mean           |     0.00% |     0.017181 |     0.011202 |     0.000125
+Shimmer:APQ3_roll_std_3                                      | Rolling Std            |     0.00% |     0.005842 |     0.006518 |     0.000042
+Shimmer:APQ3_rate_change                                     | Rate Change            |     0.00% |    -0.000054 |     0.011998 |     0.000144
+Shimmer:APQ3_historical_variability                          | Historical Variability |     0.00% |     0.008449 |     0.005015 |     0.000025
+Shimmer:APQ5_lag_1                                           | Lag                    |     0.00% |     0.020179 |     0.016732 |     0.000280
+Shimmer:APQ5_lag_2                                           | Lag                    |     0.00% |     0.020226 |     0.016809 |     0.000283
+Shimmer:APQ5_lag_3                                           | Lag                    |     0.00% |     0.020251 |     0.016801 |     0.000282
+Shimmer:APQ5_roll_mean_3                                     | Rolling Mean           |     0.00% |     0.020179 |     0.014692 |     0.000216
+Shimmer:APQ5_roll_std_3                                      | Rolling Std            |     0.00% |     0.006446 |     0.007413 |     0.000055
+Shimmer:APQ5_rate_change                                     | Rate Change            |     0.00% |    -0.000058 |     0.013423 |     0.000180
+Shimmer:APQ5_historical_variability                          | Historical Variability |     0.00% |     0.009605 |     0.006332 |     0.000040
+Shimmer:APQ11_lag_1                                          | Lag                    |     0.00% |     0.027528 |     0.020078 |     0.000403
+Shimmer:APQ11_lag_2                                          | Lag                    |     0.00% |     0.027588 |     0.020174 |     0.000407
+Shimmer:APQ11_lag_3                                          | Lag                    |     0.00% |     0.027635 |     0.020232 |     0.000409
+Shimmer:APQ11_roll_mean_3                                    | Rolling Mean           |     0.00% |     0.027528 |     0.017492 |     0.000306
+Shimmer:APQ11_roll_std_3                                     | Rolling Std            |     0.00% |     0.008179 |     0.008898 |     0.000079
+Shimmer:APQ11_rate_change                                    | Rate Change            |     0.00% |    -0.000074 |     0.016477 |     0.000272
+Shimmer:APQ11_historical_variability                         | Historical Variability |     0.00% |     0.012232 |     0.008198 |     0.000067
+Shimmer:DDA_lag_1                                            | Lag                    |     0.00% |     0.051544 |     0.039844 |     0.001588
+Shimmer:DDA_lag_2                                            | Lag                    |     0.00% |     0.051656 |     0.039996 |     0.001600
+Shimmer:DDA_lag_3                                            | Lag                    |     0.00% |     0.051729 |     0.040053 |     0.001604
+Shimmer:DDA_roll_mean_3                                      | Rolling Mean           |     0.00% |     0.051541 |     0.033607 |     0.001129
+Shimmer:DDA_roll_std_3                                       | Rolling Std            |     0.00% |     0.017527 |     0.019555 |     0.000382
+Shimmer:DDA_rate_change                                      | Rate Change            |     0.00% |    -0.000161 |     0.035994 |     0.001296
+Shimmer:DDA_historical_variability                           | Historical Variability |     0.00% |     0.025347 |     0.015046 |     0.000226
+NHR_lag_1                                                    | Lag                    |     0.00% |     0.032255 |     0.060088 |     0.003611
+NHR_lag_2                                                    | Lag                    |     0.00% |     0.032399 |     0.060468 |     0.003656
+NHR_lag_3                                                    | Lag                    |     0.00% |     0.032464 |     0.060661 |     0.003680
+NHR_roll_mean_3                                              | Rolling Mean           |     0.00% |     0.032250 |     0.051969 |     0.002701
+NHR_roll_std_3                                               | Rolling Std            |     0.00% |     0.017645 |     0.032456 |     0.001053
+NHR_rate_change                                              | Rate Change            |     0.00% |    -0.000181 |     0.051353 |     0.002637
+NHR_historical_variability                                   | Historical Variability |     0.00% |     0.026070 |     0.029140 |     0.000849
+HNR_lag_1                                                    | Lag                    |     0.00% |    21.661980 |     4.298798 |    18.479667
+HNR_lag_2                                                    | Lag                    |     0.00% |    21.640801 |     4.304631 |    18.529844
+HNR_lag_3                                                    | Lag                    |     0.00% |    21.629900 |     4.309904 |    18.575271
+HNR_roll_mean_3                                              | Rolling Mean           |     0.00% |    21.662558 |     3.831530 |    14.680622
+HNR_roll_std_3                                               | Rolling Std            |     0.00% |     1.952046 |     1.388009 |     1.926568
+HNR_rate_change                                              | Rate Change            |     0.00% |     0.028308 |     3.266464 |    10.669786
+HNR_historical_variability                                   | Historical Variability |     0.00% |     2.544116 |     0.896211 |     0.803195
+RPDE_lag_1                                                   | Lag                    |     0.00% |     0.541704 |     0.100995 |     0.010200
+RPDE_lag_2                                                   | Lag                    |     0.00% |     0.542060 |     0.101039 |     0.010209
+RPDE_lag_3                                                   | Lag                    |     0.00% |     0.542306 |     0.101147 |     0.010231
+RPDE_roll_mean_3                                             | Rolling Mean           |     0.00% |     0.541718 |     0.086827 |     0.007539
+RPDE_roll_std_3                                              | Rolling Std            |     0.00% |     0.054294 |     0.032972 |     0.001087
+RPDE_rate_change                                             | Rate Change            |     0.00% |    -0.000396 |     0.087387 |     0.007636
+RPDE_historical_variability                                  | Historical Variability |     0.00% |     0.068283 |     0.024171 |     0.000584
+DFA_lag_1                                                    | Lag                    |     0.00% |     0.653505 |     0.070872 |     0.005023
+DFA_lag_2                                                    | Lag                    |     0.00% |     0.653766 |     0.070865 |     0.005022
+DFA_lag_3                                                    | Lag                    |     0.00% |     0.653762 |     0.070876 |     0.005023
+DFA_roll_mean_3                                              | Rolling Mean           |     0.00% |     0.653495 |     0.066785 |     0.004460
+DFA_roll_std_3                                               | Rolling Std            |     0.00% |     0.023954 |     0.016634 |     0.000277
+DFA_rate_change                                              | Rate Change            |     0.00% |    -0.000318 |     0.037860 |     0.001433
+DFA_historical_variability                                   | Historical Variability |     0.00% |     0.032500 |     0.011229 |     0.000126
+PPE_lag_1                                                    | Lag                    |     0.00% |     0.219768 |     0.091526 |     0.008377
+PPE_lag_2                                                    | Lag                    |     0.00% |     0.220061 |     0.091618 |     0.008394
+PPE_lag_3                                                    | Lag                    |     0.00% |     0.220105 |     0.091647 |     0.008399
+PPE_roll_mean_3                                              | Rolling Mean           |     0.00% |     0.219804 |     0.076956 |     0.005922
+PPE_roll_std_3                                               | Rolling Std            |     0.00% |     0.048969 |     0.036346 |     0.001321
+PPE_rate_change                                              | Rate Change            |     0.00% |    -0.000188 |     0.084066 |     0.007067
+PPE_historical_variability                                   | Historical Variability |     0.00% |     0.061565 |     0.022623 |     0.000512

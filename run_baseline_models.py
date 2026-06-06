@@ -2,6 +2,12 @@
 """
 Baseline Machine Learning Models runner script for Phase 9.
 
+Note:
+    Temporal features were intentionally excluded from baseline linear models 
+    because diagnostic ablation studies demonstrated degraded generalization 
+    performance due to multicollinearity and high-dimensional feature interactions. 
+    Temporal features remain available for advanced nonlinear models.
+
 Orchestrates the full baseline modelling pipeline:
   1. Loads the temporal feature-engineered dataset (134 columns).
   2. Re-applies the Phase 7 patient-level train/test split from persisted CSVs.
@@ -241,14 +247,30 @@ def main() -> None:
         )
 
         # -------------------------------------------------------------------
-        # Step 6: Identify feature columns
+        # Step 6: Identify feature columns and define feature groups
         # -------------------------------------------------------------------
-        exclude_cols = ["subject#", "motor_UPDRS", "total_UPDRS"]
-        feature_cols = identify_features(features_df, exclude_cols)
+        # BASELINE_FEATURES: Original Voice Biomarkers
+        BASELINE_FEATURES = config.get("data_validation", {}).get("schema", {}).get("voice_biomarkers", [])
+        
+        # ADVANCED_FEATURES: Original Voice Biomarkers + All Temporal Features
+        temporal_cols = [
+            c for c in features_df.columns
+            if any(term in c for term in ["_lag_", "_roll_", "_rate_change", "_historical_variability"])
+        ]
+        ADVANCED_FEATURES = BASELINE_FEATURES + temporal_cols
+        
+        logger.info("Feature groups defined:")
+        logger.info(f"  BASELINE_FEATURES : {len(BASELINE_FEATURES)} features")
+        logger.info(f"  ADVANCED_FEATURES : {len(ADVANCED_FEATURES)} features")
         logger.info(
-            f"Feature columns identified: {len(feature_cols)} predictors "
-            f"(voice biomarkers + temporal features)."
+            "Temporal features were intentionally excluded from baseline linear models "
+            "because diagnostic ablation studies demonstrated degraded generalization performance "
+            "due to multicollinearity and high-dimensional feature interactions. "
+            "Temporal features remain available for advanced nonlinear models."
         )
+        
+        # Restrict baseline models to use only original voice biomarkers
+        feature_cols = BASELINE_FEATURES
 
         # -------------------------------------------------------------------
         # Step 7: Initialise trainer and build models

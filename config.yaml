@@ -1,0 +1,139 @@
+# =============================================================================
+# Configuration File
+# Project: Predictive Analysis of Parkinson's Disease Progression Using Longitudinal Biomedical Voice Biomarkers
+# =============================================================================
+
+project:
+  title: "Predictive Analysis of Parkinson's Disease Progression Using Longitudinal Biomedical Voice Biomarkers"
+  version: "0.1.0"
+  description: "Dissertation project focusing on predicting Parkinson's Disease progression using longitudinal voice biomarker data."
+
+# Reproducibility Setup
+reproducibility:
+  seed: 42
+  deterministic_algorithms: true
+
+# Path Management (Relative to project root, handled by pathlib)
+paths:
+  data_dir: "data"
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  models_dir: "models"
+  evaluation_dir: "evaluation"
+  reports_dir: "reports"
+  figures_dir: "reports/figures"
+  tables_dir: "reports/tables"
+  notebooks_dir: "notebooks"
+  logs_dir: "logs"
+
+# Logging Configuration
+logging:
+  version: 1
+  disable_existing_loggers: false
+  formatters:
+    simple:
+      format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+      datefmt: "%Y-%m-%d %H:%M:%S"
+    detailed:
+      format: "%(asctime)s - %(name)s - %(levelname)s - [%(filename)s:%(lineno)d] - %(message)s"
+  handlers:
+    console:
+      class: "logging.StreamHandler"
+      level: "INFO"
+      formatter: "simple"
+      stream: "ext://sys.stdout"
+    file:
+      class: "logging.handlers.RotatingFileHandler"
+      level: "DEBUG"
+      formatter: "detailed"
+      filename: "logs/pipeline.log"
+      maxBytes: 10485760 # 10MB
+      backupCount: 5
+      encoding: "utf8"
+  root:
+    level: "DEBUG"
+    handlers: ["console", "file"]
+
+# Data Validation Configuration
+data_validation:
+  required_files:
+    - "parkinsons_updrs.csv" # Expected default dataset file name
+  schema:
+    # Example expected columns for Parkinson's telemonitoring voice biomarker dataset (e.g., UPDRS telemonitoring)
+    subject_id_col: "subject#"
+    age_col: "age"
+    sex_col: "sex"
+    test_time_col: "test_time"
+    motor_updrs_target: "motor_UPDRS"
+    total_updrs_target: "total_UPDRS"
+    # Basic biomarker features list (e.g., Jitter, Shimmer, HNR, DFA, PPE, etc.)
+    voice_biomarkers:
+      - "Jitter(%)"
+      - "Jitter(Abs)"
+      - "Jitter:RAP"
+      - "Jitter:PPQ5"
+      - "Jitter:DDP"
+      - "Shimmer"
+      - "Shimmer(dB)"
+      - "Shimmer:APQ3"
+      - "Shimmer:APQ5"
+      - "Shimmer:APQ11"
+      - "Shimmer:DDA"
+      - "NHR"
+      - "HNR"
+      - "RPDE"
+      - "DFA"
+      - "PPE"
+
+# Preprocessing Options
+preprocessing:
+  missing_value_strategy: "interpolate" # Options: interpolate, median, drop, forward_fill
+  interpolation_method: "linear"
+  outlier_removal: true
+  outlier_method: "iqr" # Options: iqr, zscore
+  iqr_threshold: 1.5
+  scaling_method: "standard" # Options: standard, minmax, robust
+
+# Feature Engineering Settings
+feature_engineering:
+  temporal_lags: [1, 2, 3] # Number of historical test times to lag
+  rolling_windows: [3, 5]  # Window sizes for moving averages of voice biomarkers
+  aggregation_functions: ["mean", "std"]
+  extract_trends: true
+
+# Classical Machine Learning Config
+classical_modeling:
+  train_size: 0.8
+  validation_size: 0.1
+  cv_splits: 5
+  models:
+    random_forest:
+      n_estimators: 100
+      max_depth: 10
+      min_samples_split: 2
+      n_jobs: -1
+    xgboost:
+      n_estimators: 150
+      max_depth: 6
+      learning_rate: 0.05
+      subsample: 0.8
+      colsample_bytree: 0.8
+      eval_metric: "rmse"
+
+# Deep Learning Sequence Modeling Config
+deep_learning:
+  model_type: "LSTM" # Options: LSTM, GRU, RNN
+  sequence_length: 5
+  hidden_dim: 64
+  num_layers: 2
+  dropout: 0.2
+  epochs: 50
+  batch_size: 32
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  device: "cuda" # cuda, mps, cpu
+
+# Explainability Configuration
+explainability:
+  shap_background_samples: 100
+  feature_importance_top_n: 15

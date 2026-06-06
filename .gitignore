@@ -1,0 +1,47 @@
+# Python Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Python caching
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project specific ignores
+# Ignore datasets but track .gitkeep
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Ignore serialized models
+models/*
+!models/.gitkeep
+
+# Ignore evaluation outputs
+evaluation/*
+!evaluation/.gitkeep
+
+# Ignore logs
+logs/*
+!logs/.gitkeep
+*.log
+
+# Ignore generated reports (figures & tables)
+reports/figures/*
+!reports/figures/.gitkeep
+reports/tables/*
+!reports/tables/.gitkeep

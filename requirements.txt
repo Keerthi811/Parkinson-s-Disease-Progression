@@ -1,0 +1,30 @@
+# -----------------------------------------------------------------------------
+# Requirements for Parkinson's Disease Progression Prediction Project
+# Title: Predictive Analysis of Parkinson's Disease Progression Using Longitudinal Biomedical Voice Biomarkers
+# -----------------------------------------------------------------------------
+
+# Core Data Processing and Numerical Operations
+numpy>=1.22.0
+pandas>=1.4.0
+scipy>=1.8.0
+
+# Machine Learning & Optimization
+scikit-learn>=1.0.0
+joblib>=1.1.0
+
+# Deep Learning (For sequence/time-series modeling of longitudinal biomarkers)
+torch>=1.11.0
+
+# Model Explainability & Interpretability
+shap>=0.40.0
+
+# Configuration & Data Validation
+pyyaml>=6.0
+pydantic>=1.9.0
+
+# Visualization & Reporting
+matplotlib>=3.5.0
+seaborn>=0.11.2
+
+# Progress Tracking & Utilities
+tqdm>=4.64.0

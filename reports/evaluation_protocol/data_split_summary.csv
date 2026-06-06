@@ -1,0 +1,7 @@
+Fold,Train Patients,Validation Patients,Train Rows,Validation Rows
+Outer Train/Test Split,34,8,4801,1074
+CV Fold 1,28,6,3926,875
+CV Fold 2,27,7,3823,978
+CV Fold 3,27,7,3810,991
+CV Fold 4,27,7,3826,975
+CV Fold 5,27,7,3819,982

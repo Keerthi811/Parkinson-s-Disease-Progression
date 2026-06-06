@@ -1,0 +1,85 @@
+{
+    "validation_status": "WARNING",
+    "schema_validation": {
+        "status": "PASS",
+        "errors": [],
+        "missing_mandatory_columns": [],
+        "missing_biomarker_columns": [],
+        "unexpected_columns": []
+    },
+    "missing_values": {
+        "status": "PASS",
+        "threshold_pct": 5.0,
+        "exceeded_columns": {},
+        "missing_counts": {
+            "subject#": 0,
+            "age": 0,
+            "sex": 0,
+            "test_time": 0,
+            "motor_UPDRS": 0,
+            "total_UPDRS": 0,
+            "Jitter(%)": 0,
+            "Jitter(Abs)": 0,
+            "Jitter:RAP": 0,
+            "Jitter:PPQ5": 0,
+            "Jitter:DDP": 0,
+            "Shimmer": 0,
+            "Shimmer(dB)": 0,
+            "Shimmer:APQ3": 0,
+            "Shimmer:APQ5": 0,
+            "Shimmer:APQ11": 0,
+            "Shimmer:DDA": 0,
+            "NHR": 0,
+            "HNR": 0,
+            "RPDE": 0,
+            "DFA": 0,
+            "PPE": 0
+        },
+        "missing_percentages": {
+            "subject#": 0.0,
+            "age": 0.0,
+            "sex": 0.0,
+            "test_time": 0.0,
+            "motor_UPDRS": 0.0,
+            "total_UPDRS": 0.0,
+            "Jitter(%)": 0.0,
+            "Jitter(Abs)": 0.0,
+            "Jitter:RAP": 0.0,
+            "Jitter:PPQ5": 0.0,
+            "Jitter:DDP": 0.0,
+            "Shimmer": 0.0,
+            "Shimmer(dB)": 0.0,
+            "Shimmer:APQ3": 0.0,
+            "Shimmer:APQ5": 0.0,
+            "Shimmer:APQ11": 0.0,
+            "Shimmer:DDA": 0.0,
+            "NHR": 0.0,
+            "HNR": 0.0,
+            "RPDE": 0.0,
+            "DFA": 0.0,
+            "PPE": 0.0
+        }
+    },
+    "duplicates": {
+        "status": "WARNING",
+        "errors": [
+            "Detected 3374 duplicate recordings for the same subject at the same test time."
+        ],
+        "full_row_duplicates_count": 0,
+        "subject_time_duplicates_count": 3374
+    },
+    "datatype_validation": {
+        "status": "PASS",
+        "errors": [],
+        "mismatches": {}
+    },
+    "range_validation": {
+        "status": "WARNING",
+        "warnings": [
+            "Detected 12 records with negative test_time values."
+        ],
+        "violations": {
+            "test_time": 12
+        }
+    }
+}

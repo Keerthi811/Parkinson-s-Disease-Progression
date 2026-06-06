@@ -1,0 +1,36 @@
+=========================================================================
+        PARKINSON'S DISEASE EXPLORATORY LONGITUDINAL ANALYSIS SUMMARY
+=========================================================================
+Analysis completed successfully.
+=========================================================================
+
+1. TARGET VARIABLE CHARACTERISTICS:
+  - motor_UPDRS: Scores range from 5.82 to 35.99 (mean of patient means).
+  - total_UPDRS: Scores range from 7.30 to 54.25 (mean of patient means).
+  - Target distributions exhibit a bimodal shape, indicating patient cohort subdivisions.
+
+2. STRONGEST VOICE BIOMARKERS (Correlations with total_UPDRS):
+  1. age: Pearson r = 0.3103
+  2. subject#: Pearson r = 0.2536
+  3. HNR: Pearson r = -0.1621
+  4. RPDE: Pearson r = 0.1569
+  5. PPE: Pearson r = 0.1562
+  - Observation: Pitch period entropy (PPE), recurrence period density entropy (RPDE), and amplitude perturbation parameters (like Shimmer:APQ11) exhibit the highest linear association with UPDRS progression targets.
+
+3. DISEASE PROGRESSION AND TEMPORAL TRENDS:
+  - Mean patient progression slope (Total UPDRS): 0.018749 score points/day (std: 0.043466)
+  - Mean patient progression slope (Motor UPDRS): 0.012053 score points/day (std: 0.036952)
+  - Patients showing positive progression rate (Total UPDRS): 31 out of 42 (73.8%)
+  - Observation: Overall trends show a gradual increase in average UPDRS scores as follow-up days increase. However, a significant cohort exhibits negative or flat slopes, illustrating clinical longitudinal heterogeneity.
+
+4. SKEWNESS & OUTLIER PROFILE:
+  - Number of highly skewed voice features (|skew| > 1.0): 13
+  - Highly skewed biomarkers: Jitter(%), Jitter(Abs), Jitter:RAP, Jitter:PPQ5, Jitter:DDP, Shimmer, Shimmer(dB), Shimmer:APQ3, Shimmer:APQ5, Shimmer:APQ11, Shimmer:DDA, NHR, PPE
+  - Observation: Biomarkers such as Jitter(%), Jitter:RAP, Jitter:DDP, and NHR exhibit highly right-skewed profiles. In contrast, HNR and DFA are closer to normal distributions.
+
+5. NOTABLE TRENDS & MODELING IMPLICATIONS:
+  - Implication 1 (Feature Scaling & Transformations): Highly skewed biomarkers will benefit from non-linear transformations (e.g. logarithmic or Box-Cox) or robust scaling before fitting linear models.
+  - Implication 2 (Patient Heterogeneity): Individual patient trajectories vary significantly in both starting levels (intercepts) and progression rates (slopes). Mixed-effects models or personalized longitudinal predictors may be necessary.
+  - Implication 3 (Non-Linear Progression): The relationship between voice biomarkers (e.g., PPE, RPDE) and UPDRS score is moderately strong but exhibits non-linear components, suggesting that tree-based regressors (Random Forest, XGBoost) or deep sequential networks (LSTM) will outperform simple linear regression models.
+
+=========================================================================

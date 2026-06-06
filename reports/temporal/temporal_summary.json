@@ -1,0 +1,8 @@
+{
+    "total_patients": 42,
+    "total_observations": 5875,
+    "avg_visits_per_patient": 139.881,
+    "max_visits": 168,
+    "min_visits": 101,
+    "ordering_status": "PASS"
+}
